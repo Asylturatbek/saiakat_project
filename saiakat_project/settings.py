@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'telusko.urls'
+ROOT_URLCONF = 'saiakat_project.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'telusko.wsgi.application'
+WSGI_APPLICATION = 'saiakat_project.wsgi.application'
 
 
 # Database
