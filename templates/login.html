@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'index.html' %}
+    {% load static %}
+    <title>Login</title>
+</head>
+<body>
+    {% block content %}
+    <br><br><br><br>
+    <h1>Login</h1>
+        <!-- {% for message in messages %} -->
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+       <!--  {% endfor %} -->
+    <form action="login" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="03">Username</label>
+                <input type="text" name="username" class="form-control" id="03" placeholder="Enter Username" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="05">Password</label>
+                <input type="text" name="password" class="form-control" id="05" placeholder="Enter password" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <br><br><br>
+            </div>
+        </div>
+        <br><br><br>
+        <button type="submit" class="btn btn-primary" style='margin-left: 20px; margin-top: 7px; margin-bottom: 5px'>Login</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

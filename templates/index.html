@@ -63,13 +63,24 @@
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
+								{% if user.is_authenticated %}
+									<li class="active">
+										<a style="pointer-events: none; color: orange;" href="#">HELLOO {{user.first_name}}</a>
+									</li>
+								{% endif %}
 								<li class="active">
 									<a href="{% url 'saiakat-index' %}">Home</a>
 								</li>
+								{% if not user.is_authenticated %}
+									<li><a href="{% url 'accounts-register' %}">Register</a></li>
+									<li><a href="{% url 'accounts-login' %}">Login</a></li>
+								{% else %}
+									<li><a href="{% url 'accounts-logout' %}">Logout</a></li>
+								{% endif %}
 								<li>
-									<a href="#" class="fh5co-sub-ddown">Accounts</a>
+									<a style="pointer-events: none;" href="#" class="fh5co-sub-ddown">Accounts</a>
 									 <ul class="fh5co-sub-menu">
-										<li><a href="{% url 'accounts-register' %}">Register</a></li>
+										<li><a href="#">Register</a></li>
 										<li><a href="#">Login</a></li>
 										<li><a href="#">Logout</a></li>
 									</ul>
@@ -123,38 +134,25 @@
 
 		<div class="fh5co-section">
 			<div class="container">
+				<h3>News</h3>
+				{% for new in news %}
 				<div class="row">
 					<div class="col-md-6 fh5co-news">
-						<h3>News</h3>
 						<ul>
 							<li>
 								<a href="#">
-									<span class="fh5co-date">Sep. 10, 2016</span>
-									<h3>Newly done Bridge of London</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="fh5co-date">Sep. 10, 2016</span>
-									<h3>Newly done Bridge of London</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="fh5co-date">Sep. 10, 2016</span>
-									<h3>Newly done Bridge of London</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
+									<span class="fh5co-date">{{new.date}}</span>
+									<h3>{{new.name}}</h3>
+									<p>{{new.desc}}</p>
 								</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-md-6 fh5co-testimonial">
-						<img src="{% static 'images/cover_bg_1.jpg' %}" alt="Some image" class="img-responsive mb20">
-						<img src="{% static 'images/cover_bg_1.jpg' %}" alt="Some image" class="img-responsive">
+						<img src="{{new.img.url}}" alt="Some image" class="img-responsive">
 					</div>
 				</div>
+				{% endfor %}
 			</div>
 		</div>
 		{% endblock %}
@@ -170,7 +168,7 @@
 								<a href="#"><i class="icon-dribbble2"></i></a>
 								<a href="#"><i class="icon-youtube"></i></a>
 							</p>
-							<p>Copyright 2019 Saiakat <a href="#">Saiakat</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="Google.com" target="_blank">Asylturatbek.co</a> / Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
+							<p>Copyright 2019 Saiakat <a href="#">Saiakat</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="Google.com" target="_blank">Asylturatbek.co</a></p>
 						</div>
 					</div>
 				</div>

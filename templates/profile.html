@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>profile</title>
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="profile-header-container">
+                <div class="profile-header-img">
+                    <img class="img-circle crop" src="{user.img.url}" />
+                    <!-- badge -->
+                    <div class="rank-label-container">
+                        <span class="label label-default rank-label">100 puntos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
+<style>
+    .crop {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+    }
+</style>
