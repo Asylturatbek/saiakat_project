@@ -46,5 +46,3 @@ def logout(request):
     messages.info(request, 'You are logged out. Please login again.')
     return redirect('accounts-login')
 
-def profile(request):
-    return render(request, 'profile.html')
